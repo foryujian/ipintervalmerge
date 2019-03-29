@@ -16,8 +16,10 @@ Public Class IP区间合并工具
         Dim ip(3) As Integer
         Dim st, ed As Long
         Dim i As Integer
+        Dim Past As Integer
         For Each txt In IO.File.ReadLines(file)
             If txt.Length = 0 Then Continue For
+            Past += 1
             If txt.Contains("-") Then
                 tmp = txt.Split("-")
                 If tmp.Length = 2 Then
@@ -69,6 +71,7 @@ Public Class IP区间合并工具
                    RichTextBox2.Text = YuLan(newfile)
                    Button1.Enabled = True
                End Sub)
+        MsgBox("合并前：" & Past & vbCrLf & "合并后：" & IPRes.Count)
     End Sub
 
     Public Shared Function IpToLong(strIP As String) As Long
